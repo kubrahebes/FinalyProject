@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="15dp"
+    android:layout_marginTop="15dp"
+    android:descendantFocusability="blocksDescendants"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kubra"
+            android:textColor="#074358"
+            android:textStyle="bold|italic"
+            android:id="@+id/product_name"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kubra"
+            android:id="@+id/price"
+            android:textStyle="italic"
+            android:textSize="17sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:textStyle="italic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kubra"
+            android:id="@+id/quentity"
+            android:textSize="17sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            />
+
+    </LinearLayout>
+    <Button
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buy_btn"
+        android:background="#dba67b"
+        android:textColor="#074358"
+        android:textStyle="bold|italic"
+        android:textSize="17sp"
+        android:layout_marginRight="5dp"
+        android:layout_alignParentRight="true"
+        android:text="Buy"
+
+    />
+
+
+</RelativeLayout>

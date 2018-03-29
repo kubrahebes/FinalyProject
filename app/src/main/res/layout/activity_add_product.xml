@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    ><ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NEW PRODUCT"
+            android:textColor="#074358"
+            android:textSize="19sp"
+            android:textStyle="bold|italic"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/text"/>
+        <LinearLayout
+            android:layout_below="@+id/text"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/product_name"
+                android:layout_marginTop="8dp"
+                android:hint="Product Name"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/price"
+                android:layout_marginTop="8dp"
+                android:hint="Price"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/quentity"
+                android:layout_marginTop="8dp"
+                android:hint="Quentity"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/supportName"
+                android:layout_marginTop="8dp"
+                android:hint="Support Name"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/supportemail"
+                android:layout_marginTop="8dp"
+                android:hint="Support Email"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/supportphone"
+                android:layout_marginTop="8dp"
+                android:hint="Support Phone"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add"
+                android:background="#dba67b"
+                android:textColor="#074358"
+                android:textStyle="bold|italic"
+                android:layout_margin="10dp"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/addnewProduct"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>
+</RelativeLayout>
