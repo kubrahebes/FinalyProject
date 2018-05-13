@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">FinalyProject</string>
-    <string name="action_settings">Delete this Product</string>
-    <string name="action_delete_all">Delete All Product</string>
-    <string name="action_update">Update this Product</string>
+    <string name="app_name">Stok Takip</string>
+    <string name="action_settings">Ürünü sil</string>
+    <string name="action_delete_all">Tüm Ürünleri Sil</string>
+    <string name="action_update">Ürünü GÜncelle</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="tab_text_1">Product</string>
     <string name="tab_text_2">Update</string>
-    <string name="nodate">  There is no product\n if you want to add new product,\n you can press the add button.</string>
+    <string name="nodate"> Kayıtlı Ürün Bulunmamaktadır\n Yeni Ürün Eklemek İstiyorsanız,\n Artı Butonuna Basarak Ekleyebilirsiniz.</string>
 </resources>

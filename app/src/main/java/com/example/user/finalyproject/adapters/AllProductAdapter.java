@@ -32,21 +32,26 @@ public class AllProductAdapter extends CursorAdapter {
     public void bindView(View view, Context context, final Cursor cursor) {
         TextView nameTextView = view.findViewById(R.id.product_name);
         TextView priceTextView = view.findViewById(R.id.price);
+        TextView priceTextView1 = view.findViewById(R.id.quentity1);
         quentityTextView = view.findViewById(R.id.quentity);
-        Button buybtn = view.findViewById(R.id.buy_btn);
+//        Button buybtn = view.findViewById(R.id.buy_btn);
 
         int nameColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_PRODUCT_NAME);
-        int priceColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_PRODUCT_PRICE);
+        int priceColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_SUPPLIER_PHONE);
         int quentityColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_PRODUCT_QUANTITY);
+        int quentityColumnIndex2 = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_SUPPLIER_NAME);
 
         final String productName = cursor.getString(nameColumnIndex);
         final int price = cursor.getInt(priceColumnIndex);
         final Integer[] quantity = {cursor.getInt(quentityColumnIndex)};
+        final String productName1 = cursor.getString(quentityColumnIndex2);
 
         nameTextView.setText(productName);
         priceTextView.setText("" + price);
         quentityTextView.setText("" + quantity[0]);
+        priceTextView1.setText("" + productName1);
 
+/*
         buybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +63,7 @@ public class AllProductAdapter extends CursorAdapter {
                     quentityTextView.setText(quantity[0] + "");
                 }
             }
-        });
+        });*/
 
 
     }

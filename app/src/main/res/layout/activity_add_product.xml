@@ -3,20 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
+    android:background="#E8EAED"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    ><ScrollView
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent">
+    >
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        card_view:cardCornerRadius="8dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0.0px"
+        card_view:cardElevation="18dp"
+        android:layout_marginBottom="30dp"
+        >
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NEW PRODUCT"
+            android:text="Yeni Ürün"
             android:textColor="#074358"
             android:textSize="19sp"
             android:textStyle="bold|italic"
@@ -30,53 +51,78 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <EditText
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/product_name"
+               android:textColorHint="@color/colorText"
                 android:layout_marginTop="8dp"
-                android:hint="Product Name"/>
+                android:hint="Ürün Adı"/>
             <EditText
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/price"
+                android:inputType="number"
+                android:textColorHint="@color/colorText"
                 android:layout_marginTop="8dp"
-                android:hint="Price"/>
+                android:hint="Ürün Fiyatı"/>
             <EditText
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/quentity"
+                android:textColorHint="@color/colorText"
                 android:layout_marginTop="8dp"
-                android:hint="Quentity"/>
+                android:inputType="number"
+                android:hint="Ürün Adedi"/>
             <EditText
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/supportName"
                 android:layout_marginTop="8dp"
-                android:hint="Support Name"/>
+                android:hint="Üretici Adı"
+                android:textColorHint="@color/colorText"
+                />
             <EditText
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+               android:textColorHint="@color/colorText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/supportemail"
                 android:layout_marginTop="8dp"
-                android:hint="Support Email"/>
+                android:hint="Üreticit Email"/>
             <EditText
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:textColorHint="@color/colorText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/supportphone"
                 android:layout_marginTop="8dp"
-                android:hint="Support Phone"/>
+                android:inputType="number"
+                android:hint="Üretici Telefon"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add"
-                android:background="#dba67b"
+                android:text="Ekle"
+                android:layout_gravity="center"
+                android:background="@drawable/shape"
                 android:textColor="#074358"
                 android:textStyle="bold|italic"
                 android:layout_margin="10dp"
                 android:layout_alignParentBottom="true"
                 android:id="@+id/addnewProduct"/>
         </LinearLayout>
-
+            </RelativeLayout>
+        </ScrollView>
     </RelativeLayout>
-</ScrollView>
+
+    </android.support.v7.widget.CardView>
 </RelativeLayout>
