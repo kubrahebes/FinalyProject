@@ -3,107 +3,118 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#324A5E"
+    android:background="@drawable/bacground"
     tools:context=".LoginActivity">
 
 
-    <ImageView
+
+    <TextView
         android:id="@+id/login_logo"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp"
-        android:background="@drawable/warehouse" />
+        android:text="ADMİN GRİŞ"
+        android:textColor="#111"
+        android:textSize="25dp" />
 
-    <EditText
-        android:id="@+id/user_name_edt"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
+    <LinearLayout
+        android:id="@+id/liner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/login_logo"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="35dp"
-        android:hint="Kullanıcı Adı"
-        android:inputType="textEmailAddress"
-        android:padding="10dp"
-        android:textColor="#ffffff"
-        android:textColorHint="#ffffff"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="80dp"
+        android:orientation="horizontal">
 
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="Kullanıcı Adı "
+            android:textColor="@color/colorText"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/password_edt"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/user_name_edt"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:hint="Şifre"
-        android:inputType="textPassword"
-        android:padding="10dp"
-        android:textColor="#ffffff"
-        android:textColorHint="#ffffff" />
+        <EditText
+            android:id="@+id/user_name_edt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/shape"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textColor="#111"
+            android:textColorHint="#ffffff"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/liner2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/liner"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Şifre"
+            android:textColor="@color/colorText"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/password_edt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="92dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="#111"
+            android:textColorHint="#ffffff" />
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/sing_in_btn"
         android:layout_width="110.5dp"
         android:layout_height="40.5dp"
-        android:layout_alignEnd="@+id/login_logo"
-        android:layout_alignRight="@+id/login_logo"
-        android:layout_below="@+id/password_edt"
-        android:layout_marginTop="23dp"
-        android:background="@drawable/shape"
+        android:layout_below="@+id/liner2"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="33dp"
+        android:background="@drawable/shape_mavi"
         android:fontFamily="sans-serif-medium"
-        android:text="Giriş"
-        android:textColor="#ffffff"
+        android:text="Sign İn"
+        android:textColor="#fff"
         android:textSize="17.6sp"
         android:textStyle="normal" />
 
-    <TextView
-        android:id="@+id/login_forgot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/sing_in_btn"
-        android:layout_alignStart="@+id/sing_in_btn"
-        android:layout_below="@+id/sing_in_btn"
-        android:layout_marginTop="22dp"
-        android:clickable="true"
-        android:text="Şifremi unuttum?"
-        android:textColor="#fff" />
+    <Button
+        android:id="@+id/sing_up_btn"
+        android:layout_width="110.5dp"
+        android:layout_height="40.5dp"
+        android:layout_marginRight="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/liner2"
+        android:layout_marginTop="33dp"
+        android:background="@drawable/shape_mavi"
+        android:fontFamily="sans-serif-medium"
+        android:text="Sign Out"
+        android:textColor="#fff"
+        android:textSize="17.6sp"
+        android:textStyle="normal" />
 
-    <TextView
-        android:id="@+id/login_forget_click"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/noaccount"
-        android:layout_toEndOf="@+id/login_forgot"
-        android:layout_toRightOf="@+id/login_forgot"
-        android:clickable="true"
-        android:paddingLeft="7dp"
-        android:text="hatırla"
-        android:textColor="@color/colorAccent" />
-
-    <TextView
-        android:id="@+id/noaccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/login_forgot"
-        android:layout_alignStart="@+id/login_forgot"
-        android:layout_below="@+id/login_forgot"
-        android:layout_marginTop="22dp"
-        android:text="Hesabım yok?"
-        android:textColor="#fff" />
-
-    <TextView
-        android:id="@+id/register_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/noaccount"
-        android:layout_marginLeft="7dp"
-        android:layout_toRightOf="@+id/noaccount"
-        android:clickable="true"
-        android:text="Kayıt"
-        android:textColor="@color/colorAccent" />
 
 
 </RelativeLayout>

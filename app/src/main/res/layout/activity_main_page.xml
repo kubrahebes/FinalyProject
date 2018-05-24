@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#F2F2F2"
+    android:layout_height="match_parent"
+    tools:context=".MainPageActivity">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:id="@+id/urun_ekle"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="60dp"
+    android:background="@drawable/shape"
+    android:orientation="horizontal">
+
+
+    <ImageView
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:background="@drawable/floppydisk"/>
+
+    <TextView
+        android:layout_gravity="center"
+        android:layout_marginLeft="80dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Ürün Ekle"
+        />
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/urun_sil"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:background="@drawable/delete"/>
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_marginLeft="80dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Ürün Sil"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/stok_bilgi"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:background="@drawable/checklist"/>
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_marginLeft="80dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Stok Bilgisi"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/guncelle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="40dp"
+            android:layout_height="45dp"
+            android:background="@drawable/loop"/>
+
+        <TextView
+            android:textColor="@color/colorText"
+            android:layout_gravity="center"
+            android:layout_marginLeft="80dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Güncelle"
+            />
+    </LinearLayout>
+
+</LinearLayout>

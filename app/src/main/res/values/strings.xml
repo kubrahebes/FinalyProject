@@ -7,4 +7,8 @@
     <string name="tab_text_1">Product</string>
     <string name="tab_text_2">Update</string>
     <string name="nodate"> Kayıtlı Ürün Bulunmamaktadır\n Yeni Ürün Eklemek İstiyorsanız,\n Artı Butonuna Basarak Ekleyebilirsiniz.</string>
+    <string name="delete">Urun Silme</string>
+    <string name="context">Bu urunu silmek istiyormusunuz ?</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
 </resources>

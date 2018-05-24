@@ -2,18 +2,14 @@ package com.example.user.finalyproject;
 
 import android.app.LoaderManager;
 import android.content.CursorLoader;
-import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
+
 import com.example.user.finalyproject.DataBase.DbHelper;
 import com.example.user.finalyproject.DataBase.ProductContract;
 import com.example.user.finalyproject.adapters.AllProductAdapter;
@@ -33,18 +29,11 @@ public class AllProductActivity extends AppCompatActivity implements LoaderManag
 
         listView = findViewById(R.id.list);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent openAddPage = new Intent(AllProductActivity.this, AddProductActivity.class);
-                startActivity(openAddPage);
-            }
-        });
+
 
         mDbHelper = new DbHelper(this);
         getLoaderManager().initLoader(loaderKeyCode, null, this);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      /*  listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(AllProductActivity.this, DetailActivity.class);
@@ -52,7 +41,7 @@ public class AllProductActivity extends AppCompatActivity implements LoaderManag
                 startActivity(intent);
 
             }
-        });
+        });*/
     }
 
     @Override
@@ -103,17 +92,9 @@ public class AllProductActivity extends AppCompatActivity implements LoaderManag
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         //  cursor.moveToFirst();
-        TextView textViewEmpty = findViewById(R.id.empty_list);
-        if (cursor.getCount() == 0) {
-            listView.setVisibility(View.GONE);
-            textViewEmpty.setVisibility(View.VISIBLE);
-        } else {
-            listView.setVisibility(View.VISIBLE);
-            textViewEmpty.setVisibility(View.GONE);
+
             adapter = new AllProductAdapter(this, cursor);
             listView.setAdapter(adapter);
-
-        }
 
 
     }
