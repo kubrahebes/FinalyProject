@@ -14,7 +14,10 @@ public class SpleshActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SpleshActivity.this, LoginActivity.class));
+                Intent intent =new Intent(SpleshActivity.this,LoginActivity.class);
+                intent.putExtra("username","kubrahebes");
+                intent.putExtra("password","1234");
+                startActivity(intent);
             }
         }, 2500);
 

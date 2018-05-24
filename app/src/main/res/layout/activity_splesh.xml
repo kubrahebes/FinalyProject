@@ -3,25 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#324A5E">
+    android:background="@drawable/bacground">
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/warehouse"
-        android:text="Hello World!" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/icon"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="190dp"
         android:text="Stok Takip"
-        android:textColor="#fff"
-        android:textSize="25dp"
+        android:textColor="#2F73BE"
+        android:textSize="29dp"
         android:textStyle="bold|italic" />
 
 </RelativeLayout>

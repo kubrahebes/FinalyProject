@@ -18,12 +18,12 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String SQL_CREATE_PRODUCTS_TABLE = "CREATE TABLE " + ProductContract.ProductEntry.TABLE_NAME + " ("
                 + ProductContract.ProductEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + ProductContract.ProductEntry.COLUMN_PRODUCT_NAME + " TEXT NOT NULL, "
-                + ProductContract.ProductEntry.COLUMN_PRODUCT_PRICE + " INTEGER NOT NULL, "
-                + ProductContract.ProductEntry.COLUMN_PRODUCT_QUANTITY + " INTEGER , "
+                + ProductContract.ProductEntry.COLUMN_PRODUCT_NAME + " INTEGER NOT NULL, "
+                + ProductContract.ProductEntry.COLUMN_PRODUCT_PRICE + " TEXT NOT NULL, "
+                + ProductContract.ProductEntry.COLUMN_PRODUCT_QUANTITY + " TEXT , "
                 + ProductContract.ProductEntry.COLUMN_SUPPLIER_NAME + " TEXT, "
                 + ProductContract.ProductEntry.COLUMN_PRODUCT_IMAGE + " TEXT ,"
-                + ProductContract.ProductEntry.COLUMN_SUPPLIER_EMAIL + " TEXT, "
+                + ProductContract.ProductEntry.COLUMN_SUPPLIER_EMAIL + " INTEGER, "
                 + ProductContract.ProductEntry.COLUMN_SUPPLIER_PHONE + " TEXT);";
         sqLiteDatabase.execSQL(SQL_CREATE_PRODUCTS_TABLE);
     }

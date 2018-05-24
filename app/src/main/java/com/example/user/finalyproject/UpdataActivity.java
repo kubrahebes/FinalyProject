@@ -1,49 +1,81 @@
 package com.example.user.finalyproject;
 
-import android.content.ContentValues;
+import android.app.LoaderManager;
+import android.content.CursorLoader;
+import android.content.Intent;
+import android.content.Loader;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Patterns;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import com.example.user.finalyproject.DataBase.DbHelper;
 import com.example.user.finalyproject.DataBase.ProductContract;
+import com.example.user.finalyproject.adapters.AllProductAdapter2;
 
-public class UpdataActivity extends AppCompatActivity {
-    EditText product_name;
-    EditText pricee;
-    EditText quentity;
-    EditText supportName;
-    EditText supportEmail;
-    EditText supportPhone;
-
-    int price;
-    String name;
-    String supportnamee;
-    private Integer quantity;
-    String supportEmaill;
-    String supplierPhonee;
-    int getPosition;
+public class UpdataActivity extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor>{
+    private int loaderKeyCode = 0;
+    private DbHelper mDbHelper;
+    private ListView listView;
+    private AllProductAdapter2 adapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_updata);
-        getPosition = getIntent().getIntExtra("select_product", 0);
 
-        product_name = (EditText) findViewById(R.id.product_name);
-        pricee = (EditText) findViewById(R.id.price);
-        quentity = (EditText) findViewById(R.id.quentity);
-        supportName = (EditText) findViewById(R.id.supportName);
-        supportEmail = (EditText) findViewById(R.id.supportemail);
-        supportPhone = (EditText) findViewById(R.id.supportphone);
-        Button btnUpdate = findViewById(R.id.addnewProduct);
+        listView = findViewById(R.id.list);
 
 
+
+        mDbHelper = new DbHelper(this);
+        getLoaderManager().initLoader(loaderKeyCode, null, this);
+       listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(UpdataActivity.this, UrunGuncelleActivity.class);
+                intent.putExtra("select_product", i);
+                startActivity(intent);
+
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_page, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                deleteAll();
+                return true;
+
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void deleteAll() {
+        int rowsDeleted = getContentResolver().delete(ProductContract.ProductEntry.CONTENT_URI, null, null);
+    }
+
+    protected void onResume() {
+
+        super.onResume();
+        getLoaderManager().restartLoader(0, null, this);
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         String[] projection = {
                 ProductContract.ProductEntry._ID,
                 ProductContract.ProductEntry.COLUMN_PRODUCT_NAME,
@@ -52,65 +84,28 @@ public class UpdataActivity extends AppCompatActivity {
                 ProductContract.ProductEntry.COLUMN_PRODUCT_IMAGE,
                 ProductContract.ProductEntry.COLUMN_SUPPLIER_NAME,
                 ProductContract.ProductEntry.COLUMN_SUPPLIER_EMAIL,
-                ProductContract.ProductEntry.COLUMN_SUPPLIER_PHONE
-        };
+                ProductContract.ProductEntry.COLUMN_SUPPLIER_PHONE};
 
+        return new CursorLoader(this, ProductContract.ProductEntry.CONTENT_URI, projection, null,
+                null, null);
 
-        Cursor cursor = getContentResolver().query(ProductContract.ProductEntry.CONTENT_URI, projection, null, null, null);
-        cursor.moveToPosition(getPosition);
-
-        int nameColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_PRODUCT_NAME);
-        int quantityColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_PRODUCT_QUANTITY);
-        int priceColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_PRODUCT_PRICE);
-        int SupnameColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_SUPPLIER_NAME);
-        int SupEmailColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_SUPPLIER_EMAIL);
-        int SupPhoneColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_SUPPLIER_PHONE);
-
-
-        name = cursor.getString(nameColumnIndex);
-        quantity = cursor.getInt(quantityColumnIndex);
-        price = cursor.getInt(priceColumnIndex);
-        supportnamee = cursor.getString(SupnameColumnIndex);
-        supportEmaill = cursor.getString(SupEmailColumnIndex);
-        supplierPhonee = cursor.getString(SupPhoneColumnIndex);
-
-
-        product_name.setText("" + name);
-        quentity.setText(Integer.toString(quantity));
-        pricee.setText(Integer.toString(price));
-        supportName.setText("" + supportnamee);
-        supportEmail.setText("" + supportEmaill);
-        supportPhone.setText("" + supplierPhonee);
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (product_name.getText().toString().isEmpty() || pricee.getText().toString().isEmpty() || quentity.getText().toString().isEmpty() ||
-                        supportName.getText().toString().isEmpty() ||
-                        supportEmail.getText().toString().isEmpty()) {
-                    Toast.makeText(UpdataActivity.this, "You need to fill everywhere.", Toast.LENGTH_SHORT).show();
-                } else if (isValidEmail(supportEmail.getText().toString().trim()) == false) {
-                    Toast.makeText(UpdataActivity.this, "You need to right your mail address correctly.", Toast.LENGTH_SHORT).show();
-
-                } else {
-
-                    ContentValues values = new ContentValues();
-                    values.put(ProductContract.ProductEntry.COLUMN_PRODUCT_NAME, product_name.getText().toString());
-                    values.put(ProductContract.ProductEntry.COLUMN_PRODUCT_QUANTITY, quentity.getText().toString());
-                    values.put(ProductContract.ProductEntry.COLUMN_PRODUCT_PRICE, pricee.getText().toString());
-                    values.put(ProductContract.ProductEntry.COLUMN_SUPPLIER_NAME, supportName.getText().toString());
-                    values.put(ProductContract.ProductEntry.COLUMN_SUPPLIER_PHONE, supportPhone.getText().toString());
-                    values.put(ProductContract.ProductEntry.COLUMN_SUPPLIER_EMAIL, supportEmail.getText().toString());
-                    getContentResolver().update(ProductContract.ProductEntry.CONTENT_URI, values, ProductContract.ProductEntry.COLUMN_PRODUCT_NAME + "=?", new String[]{name});
-                    finish();
-
-                }
-
-
-            }
-        });
     }
 
-    public final static boolean isValidEmail(CharSequence target) {
-        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        //  cursor.moveToFirst();
+
+        adapter = new AllProductAdapter2(this, cursor);
+        listView.setAdapter(adapter);
+
+
     }
-}
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        adapter.swapCursor(null);
+    }
+
+
+    }
+

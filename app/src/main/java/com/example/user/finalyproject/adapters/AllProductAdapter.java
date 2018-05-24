@@ -1,7 +1,8 @@
 package com.example.user.finalyproject.adapters;
 
-import android.content.ContentValues;
+
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +10,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.user.finalyproject.DataBase.ProductContract;
 import com.example.user.finalyproject.R;
+
+import java.util.ArrayList;
 
 
 public class AllProductAdapter extends CursorAdapter {
     private Context Context1;
 
-    TextView quentityTextView;
+
 
     public AllProductAdapter(Context context, Cursor c) {
         super(context, c, 0);
@@ -29,41 +34,43 @@ public class AllProductAdapter extends CursorAdapter {
     }
 
     @Override
-    public void bindView(View view, Context context, final Cursor cursor) {
+    public void bindView(View view, final Context context, final Cursor cursor) {
         TextView nameTextView = view.findViewById(R.id.product_name);
         TextView priceTextView = view.findViewById(R.id.price);
         TextView priceTextView1 = view.findViewById(R.id.quentity1);
-        quentityTextView = view.findViewById(R.id.quentity);
-//        Button buybtn = view.findViewById(R.id.buy_btn);
+        Button sendMail= view.findViewById(R.id.mail_send);
+
 
         int nameColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_PRODUCT_NAME);
-        int priceColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_SUPPLIER_PHONE);
-        int quentityColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_PRODUCT_QUANTITY);
-        int quentityColumnIndex2 = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_SUPPLIER_NAME);
+        int priceColumnIndex = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_PRODUCT_PRICE);
+        int quentityColumnIndex2 = cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_SUPPLIER_EMAIL);
 
         final String productName = cursor.getString(nameColumnIndex);
-        final int price = cursor.getInt(priceColumnIndex);
-        final Integer[] quantity = {cursor.getInt(quentityColumnIndex)};
+        final String  price = cursor.getString(priceColumnIndex);
         final String productName1 = cursor.getString(quentityColumnIndex2);
 
         nameTextView.setText(productName);
         priceTextView.setText("" + price);
-        quentityTextView.setText("" + quantity[0]);
         priceTextView1.setText("" + productName1);
 
-/*
-        buybtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (quantity[0] > 0) {
-                    quantity[0] -= 1;
-                    ContentValues datas = new ContentValues();
-                    datas.put(ProductContract.ProductEntry.COLUMN_PRODUCT_QUANTITY, quantity[0]);
-                    view.getContext().getContentResolver().update(ProductContract.ProductEntry.CONTENT_URI, datas, ProductContract.ProductEntry.COLUMN_PRODUCT_NAME + "=?", new String[]{productName});
-                    quentityTextView.setText(quantity[0] + "");
-                }
-            }
-        });*/
+     sendMail.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View view) {
+             Intent i = new Intent(Intent.ACTION_SEND);
+             i.setType("message/rfc822");
+             i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"kubra.hebes@gmail.com"});
+             i.putExtra(Intent.EXTRA_SUBJECT, "Urün Bilgisi");
+             i.putExtra(Intent.EXTRA_TEXT   , productName+ " "+ price+ " "+ productName1);
+             try {
+               context.startActivity(Intent.createChooser(i, "Send mail..."));
+             } catch (android.content.ActivityNotFoundException ex) {
+                 Toast.makeText(context, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+             }
+         }
+     });
+
+
+
 
 
     }
